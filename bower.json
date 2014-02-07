@@ -1,0 +1,25 @@
+{
+  "name": "ekTags",
+  "version": "0.1.0",
+  "authors": [
+    "Antonio Vera <antonio.ignacio.vera@gmail.com>"
+  ],
+  "description": "Tags widget for Epistemonikos documents.",
+  "main": "ek-tags.js",
+  "keywords": [
+    "angular-js",
+    "epistemonikos",
+    "tags"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-tags-input": "https://github.com/epistemonikos/ngTagsInput.git"
+  }
+}
