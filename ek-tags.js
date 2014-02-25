@@ -52,6 +52,7 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 		$http(httpConfig)
 		    .success(function(data) {
 			scope.tags = data;
+			initConfirmationStatus();
 		    })
 		    .error(function(data) {
 			console.log("Error while getting tags. Received data: " + data);
@@ -108,6 +109,7 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 		    .success(function(data) {
 			scope.confirmed = JSON.parse(data);
 			updateTagsEditableStatus(scope.confirmed);
+			scope.disableConfirmButton = false;
 		    })
 		    .error(function() {
 			console.log("Error while retrieving confirmation status.");
@@ -148,12 +150,12 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 
 	    };
 
-	    getTags();
             initEditableStatus();
-	    initConfirmationStatus();
+	    scope.disableConfirmButton = true;
+	    getTags();
 
 	},
-	template: '<tags-input custom-editable-class="{{ customEditableClass }}" custom-uneditable-class="{{ customUneditableClass }}" editable="allowTagEdition" ng-model=tags on-tag-added="addTag($tag)" on-tag-removed="removeTag($tag)"></tags-input><button class="{{ confirmButtonClass }}" ng-click="buttonHandler()" ng-hide="readonly">{{ buttonLegend }}</button>'
+	template: '<tags-input custom-editable-class="{{ customEditableClass }}" custom-uneditable-class="{{ customUneditableClass }}" editable="allowTagEdition" ng-model=tags on-tag-added="addTag($tag)" on-tag-removed="removeTag($tag)"></tags-input><button class="{{ confirmButtonClass }}" ng-disabled="disableConfirmButton" ng-click="buttonHandler()" ng-hide="readonly">{{ buttonLegend }}</button>'
     };
 
 }]);
