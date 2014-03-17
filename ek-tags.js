@@ -69,7 +69,7 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 
 		$http(httpConfig)
                     .success(function(data) {
-                        onTagAdded(data);
+                        scope.onTagAdded()(addedTag);
                     })
 		    .error(function(data) {
 			console.log("Error while adding tag. Received data: " + data);
@@ -83,7 +83,7 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 
 		$http(httpConfig)
                     .success(function(data) {
-                        onTagRemoved(data);
+                        scope.onTagRemoved()(removedTag);
                     })
 		    .error(function(data) {
 			console.log("Error while removing tag. Received data: " + data);
