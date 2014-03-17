@@ -36,6 +36,8 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 	    'src':'@',
 	    'readonly':'@',
 	    'confirmCallback':'&onConfirm',
+	    'onTagAdded':'&',
+	    'onTagRemoved':'&',
             'customEditableClass':'@',
             'customUneditableClass':'@',
 	    'confirmButtonClass':'@'
@@ -66,6 +68,9 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 		httpConfig.data = JSON.stringify(addedTag);
 
 		$http(httpConfig)
+                    .success(function(data) {
+                        onTagAdded(data);
+                    })
 		    .error(function(data) {
 			console.log("Error while adding tag. Received data: " + data);
 		    });
@@ -77,6 +82,9 @@ var tagsModule = angular.module('ekTags', ['ngTagsInput']);
 		httpConfig.data = JSON.stringify(removedTag);
 
 		$http(httpConfig)
+                    .success(function(data) {
+                        onTagRemoved(data);
+                    })
 		    .error(function(data) {
 			console.log("Error while removing tag. Received data: " + data);
 		    });

@@ -20,6 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "ng-tags-input": "https://github.com/epistemonikos/ngTagsInput.git"
+    "ng-tags-input": "https://github.com/epistemonikos/ngTagsInput.git#1.1.3"
   }
 }
